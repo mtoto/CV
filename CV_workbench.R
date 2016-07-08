@@ -19,6 +19,20 @@ data <- data.frame(Skills = c("Web Analytics", "Web Analytics","Web Analytics",
 # Factorize tools col
 data$Tools <- factor(data$Tools,levels = data$Tools)
 
+# Create CV data
+cv <- data.frame(Position = c("Nabit Evangelist at CloudRaker", "Planner at Tribal DDB",
+                              "Campaign Manager at ACHTUNG!", "Digital Analyst at Transavia",
+                              "Bsc. in Communication Sciences from KULeuven",
+                              "MLitt. in  Management from University of St. Andrews"),
+                 Group = c("Work","Work","Work","Work","Academics", "Academics"),
+                 StartDate = c("2011-08-01","2012-08-01","2013-03-01","2015-07-01",
+                               "2006-08-01","2009-08-01"),
+                 EndDate = c("2012-07-01", "2013-03-1", "2015-03-31", as.character(Sys.Date()),
+                             "2009-08-01", "2010-11-01"))
+
+cv$StartDate <- as.Date(cv$StartDate)
+cv$EndDate <- as.Date(cv$EndDate)
+
 # Tooltip function for displaying first var
 all_values <- function(x) {
   if(is.null(x)) return(NULL)
@@ -44,3 +58,21 @@ Bubble <- gvisBubbleChart(data, idvar="Tools",
                           options=list(
                             hAxis='{minValue:0, maxValue:5}'))
 plot(Bubble)
+
+# Timeline chart example
+require(timeline)
+require(googleVis) 
+plot(gvisTimeline(cv, barlabel="Position", rowlabel="Group",
+                  start="StartDate", end="EndDate",
+                  options=list(
+                    timeline="{barLabelStyle:{fontSize:9},
+                    showBarLabels: false}", width = 600)))
+    
+
+# example ww2
+data(ww2)
+ww2$Person <- gsub("\\n" ," ", ww2$Person)
+plot(gvisTimeline(ww2, barlabel="Person", rowlabel="Group",
+                  start="StartDate", end="EndDate",
+                  options=list(width=600, heigth = 400), chartid="ww2")
+)
