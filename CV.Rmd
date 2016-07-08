@@ -1,4 +1,27 @@
-# Create data
+---
+title: "CV"
+author: "Tamas Szilagyi"
+date: "8 July 2016"
+output: html_document
+---
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, echo = FALSE}
 data <- data.frame(Skills = c("Web Analytics", "Web Analytics","Web Analytics", 
                               "Online Advertising","Online Advertising","Online Advertising", 
                               "Data Science","Data Science","Data Science", 
@@ -11,36 +34,35 @@ data <- data.frame(Skills = c("Web Analytics", "Web Analytics","Web Analytics",
                              8,7,6,
                              7,6,9,
                              8,4,6),
-                   Years = c(4,1.5,1.75,
-                             3.25,2.25,1.25,
-                             0.5,0.75,2,
-                             1.85,0.75,0.5))
+                   Years = c(4,2,1,
+                             3,2,1,
+                             1,1,2,
+                             2,1,1))
 
-# Factorize tools col
 data$Tools <- factor(data$Tools,levels = data$Tools)
 
-# Tooltip function for displaying first var
 all_values <- function(x) {
   if(is.null(x)) return(NULL)
   paste0(names(x)[1], ": ", format(x)[1], collapse = "<br />")
 }
+```
 
-# Nice but hover wont work in html
+You can also embed plots, for example:
+
+<div class="col2">
+```{r, echo = FALSE}
 library(ggvis)
 data %>% ggvis(x = ~Tools, y = ~Level, fill =~Skills,
                fillOpacity := 0.2, fillOpacity.hover := .5) %>%
   layer_bars() %>%
   scale_numeric("y", domain = c(0, 10), nice = FALSE) %>%
   add_axis("y", title = "Level of Mastery") %>%
-  hide_legend("fill") %>%
-  add_tooltip(all_values, "hover") %>%
   add_axis("x", title ="",
            properties = axis_props(labels = list(angle = 55, align = "left")))
 
-# Bubble chart example
-Bubble <- gvisBubbleChart(data, idvar="Tools", 
-                          xvar="Years", yvar="Level",
-                          colorvar="Skills", sizevar="Level",
-                          options=list(
-                            hAxis='{minValue:0, maxValue:5}'))
-plot(Bubble)
+head(data[,c(1,2,3)],12)
+```
+<div>
+
+
+
