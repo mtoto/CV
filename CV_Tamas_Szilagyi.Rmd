@@ -1,0 +1,153 @@
+---
+title: "CV - Tamas Szilagyi"
+output: html_document
+---
+
+email: tszilagyi@outlook.com /
+mobile: +31 61 887 9150 /
+[LinkedIn](https://www.linkedin.com/in/tszilagyi) /
+[StackOverflow](http://stackoverflow.com/users/4964651/mtoto?tab=profile) 
+
+## Work
+
+
+```{r, echo = FALSE}
+source("data.R")
+```
+
+#### Timeline Work Experience
+```{r,results='asis', echo = F, out.height = 100, cache =FALSE}
+suppressPackageStartupMessages(library(googleVis))
+
+# Timeline chart example
+op <- options(gvis.plot.tag='chart')
+timel<-gvisTimeline(cv1, barlabel="Position", rowlabel="Group",
+                  start="StartDate", end="EndDate",
+                  options=list(
+                    timeline="{barLabelStyle:{fontSize:9},
+                    showBarLabels: true}", width = 900))
+plot(timel)
+```
+
+#### Digital Analyst at Transavia
+*Data Layer Development, Data Processing, Experimentation, Predictive Modeling.*  
+Built first data product for transavia.com in form of a destination recommender engine.
+
+#### Campaign Manager at Achtung!
+*KPI-centric IO-design, Tagging, Dashboarding, AB-testing, Optimization, Campaign Evaluation.*  
+Lead more than 25 analytics projects for A-list clients on all digital platforms imaginable.
+
+#### Planner at Tribal DDB
+*Social Media Analytics, Content Strategy, Social Advertising Performance Optimization.*  
+Presented content analytics findings underpinning yearly Social Strategy Plan for Heineken.
+
+#### Nabit Evangelist at CloudRaker
+*App Analytics, UX Optimization, Growth Hacking, Organic Media Strategy and PR.*  
+Lead organic media strategy and optimization of in-house app, reaching 2 million downloads.
+
+### Relevant Skills in Most Recent Jobs
+```{r,results='asis', echo = F}
+Column1 <- gvisColumnChart(s1, options = 
+                            list(vAxes="[{viewWindowMode:'explicit',
+                                 viewWindow:{min:0, max:10},title:'Skills'}]",
+                                 colors="['#34A853']",
+                                 legend = "none",
+                                 title = "Web Analytics Tools",
+                                 width = 225, height = 225))
+
+Column2 <- gvisColumnChart(s2, options = 
+                            list(vAxes="[{viewWindowMode:'explicit',
+                                 viewWindow:{min:0, max:10},title:'Skills'}]",
+                                 colors="['#EA4335']",
+                                 legend = "none",
+                                 title = "Online Advertising Tools",
+                                 width = 225, height = 225))
+
+Column3 <- gvisColumnChart(s3, options = 
+                            list(vAxes="[{viewWindowMode:'explicit',
+                                 viewWindow:{min:0, max:10},title:'Skills'}]",
+                                 colors="['#EEB211']",
+                                 legend = "none",
+                                 title = "Data Science Tools",
+                                 width = 225, height = 225))
+
+Column4 <- gvisColumnChart(s4, options = 
+                            list(vAxes="[{viewWindowMode:'explicit',
+                                 viewWindow:{min:0, max:10},title:'Skills'}]",
+                                 colors="['#4285F4']",
+                                 legend = "none",
+                                 title = "Coding Tools",
+                                 width = 225, height = 225))
+
+colors = "['#4285F4', '#34A853', '#D50F25','#EEB211', '#FBBC05', '#DB4437', '#EA4335']"
+
+opts <- paste0("{
+        link: { colorMode: 'gradient',
+               colors: ", colors ," },
+               node: { colors: ", colors ," },
+               iteration: 0
+               }" )
+
+Sankey <- gvisSankey(jobsSK, from="From", to="To", weight="Weight",
+                     options=list(
+                       sankey=opts,
+                       width = 450, 
+                       heigth = 450))
+
+obj1<-gvisMerge(Column1, Column2, horizontal = TRUE)
+obj2<-gvisMerge(Column3, Column4, horizontal = TRUE)
+obj3<-gvisMerge(obj1, obj2, horizontal = FALSE)
+obj4<-gvisMerge(Sankey,obj3, horizontal = TRUE)
+
+plot(obj4)
+```
+
+## Studies
+
+
+#### Timeline Studies
+```{r,results='asis', echo = F}
+# Timeline chart example
+time1<-gvisTimeline(cv2, barlabel="Position", rowlabel="Group",
+                  start="StartDate", end="EndDate",
+                  options=list(
+                    timeline="{barLabelStyle:{fontSize:9},
+                    showBarLabels: true}", width = 900))
+plot(time1)
+```
+
+
+#### Bsc. in Communication Sciences at KU Leuven
+*Statistics I & II, Behavioral Research Methods, Philosophy, Anthropology of Art and Popular Culture.*
+
+#### Exhange Semester at the University of Jönköping
+*Business Statistics, Marketing Management, Research Methods: Design, Implementation and Analysis.*  
+
+#### MLitt. in Management at University of St Andrews
+*Business Research Methods, Strategic Management in the Information Age, Alternative Investments.*  
+Thesis: The Sustainability of the US Dollar as an Internatinal Reserve Currency.
+
+<br>
+
+## Languages, Interests and Accomplishments
+
+### Accomplishments
+
+- Best Newbie Session at [MeasureCamp London 2015]("http://www.measurecamp.org/"): *'How Transavia uses Decision Trees to Cross- and Up-Sell'*.
+- 4-times Hungarian Champion in Sabre Fencing in team, 2nd place individually in 2001 .
+
+### Interests
+- Trekked accross Knoydart in the Highlands, the last wilderness of the UK.
+- Supported causes include kiva.org, and Hungarian Transparency NGO atlatszo.hu.
+
+### Languages
+```{r fig.width=3, fig.height=1,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("img/flags.png")
+grid.raster(img)
+```
+
+```{r}
+# CV is built using rmakrdown in combination with googleVis. Source code: https://github.com/mtoto/CV
+```
