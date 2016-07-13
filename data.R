@@ -1,28 +1,38 @@
-cv <- data.frame(Position = c("Nabit Evangelist at CloudRaker", "Planner at Tribal DDB",
-                              "Campaign Manager at ACHTUNG!", "Digital Analyst at Transavia",
-                              "Bsc. in Communication Sciences from KULeuven",
-                              "MLitt. in  Management from University of St. Andrews"),
-                 Group = c("Work","Work","Work","Work","Academics", "Academics"),
-                 StartDate = c("2011-08-01","2012-08-01","2013-03-01","2015-07-01",
-                               "2006-08-01","2009-08-01"),
-                 EndDate = c("2012-07-01", "2013-03-1", "2015-03-31", as.character(Sys.Date()),
-                             "2009-08-01", "2010-11-01"))
+# timeline data
+cv1 <- data.frame(Position = c("Nabit Evangelist", "Planner",
+                               "Campaign Manager", "Digital Analyst"),
+                  Group = c("CloudRaker","Tribal DDB","ACHTUNG!","Transavia"),
+                  StartDate = c("2011-08-01","2012-08-01","2013-03-01","2015-07-01"),
+                  EndDate = c("2012-07-01", "2013-03-1", "2015-03-31", as.character(Sys.Date())))
 
-cv$StartDate <- as.Date(cv$StartDate)
-cv$EndDate <- as.Date(cv$EndDate)
+cv1$StartDate <- as.Date(cv1$StartDate)
+cv1$EndDate <- as.Date(cv1$EndDate)
 
+# timeline data
+cv2 <- data.frame(Position = c("Bsc. in Communication Sciences","Exchange",
+                              "MLitt. in  Management"),
+                 Group = c("KU Leuven", "University of Jönköping" ,"University of St. Andrews"),
+                 StartDate = c("2006-08-01","2008-07-01", "2009-08-01"),
+                 EndDate = c("2009-08-01","2008-12-30", "2010-11-01"))
+
+cv2$StartDate <- as.Date(cv2$StartDate)
+cv2$EndDate <- as.Date(cv2$EndDate)
+
+
+
+# colchart data
 skillz <- data.frame(Skills = c("Web Analytics", "Web Analytics","Web Analytics", 
                               "Online Advertising","Online Advertising","Online Advertising", 
                               "Data Science","Data Science","Data Science", 
                               "Coding", "Coding", "Coding"),
                    Tools = c("Google Analytics", "Adobe SiteCatalyst", "Optimizely",
                              "AdWords", "Facebook Power Editor", "Clang", 
-                             "Jupyter Notebooks", "Databricks", "RStudio",
-                             "R","Python","Spark"),
+                             "Databricks", "Git", "Jupyter Notebooks", # come up with something else
+                             "R","Spark","Python"),
                    Level = c(9,6,7,
                              8,7,6,
-                             7,6,9,
-                             8,4,6),
+                             8,6,7,
+                             8,5,5),
                    Years = c(4,1.5,1.75,
                              3.25,2.25,1.25,
                              0.5,0.75,2,
@@ -32,5 +42,11 @@ s1 <- subset(skillz, skillz$Skills == "Web Analytics")[,2:3]
 s2 <- subset(skillz, skillz$Skills == "Online Advertising")[,2:3]
 s3 <- subset(skillz, skillz$Skills == "Data Science")[,2:3]
 s4 <- subset(skillz, skillz$Skills == "Coding")[,2:3]
+
+# Sanky plot data
+jobsSK <- data.frame(From=c(rep("Digital Analyst",3), rep("Campaign Manager", 3)),
+                     To=c(rep(c("Web Analytics", "Online Advertising", 
+                                "Data Science"),2)),
+                     Weight=c(5,4,7,7,6,2))
 
 
