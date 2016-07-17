@@ -33,7 +33,7 @@ plot(timel)
 *Data Layer Development, Data Processing, Experimentation, Predictive Modeling.*  
 Built first data product for transavia.com in form of a destination recommender engine.
 
-#### Campaign Manager at Achtung!
+#### Campaign Analytics at Achtung!
 *KPI-centric IO-design, Tagging, Dashboarding, AB-testing, Optimization, Campaign Evaluation.*  
 Lead more than 25 analytics projects for A-list clients on all digital platforms imaginable.
 
