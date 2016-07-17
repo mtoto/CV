@@ -1,6 +1,6 @@
 # timeline data
 cv1 <- data.frame(Position = c("Nabit Evangelist", "Planner",
-                               "Campaign Manager", "Digital Analyst"),
+                               "Campaign Analytics", "Digital Analyst"),
                   Group = c("CloudRaker","Tribal DDB","ACHTUNG!","Transavia"),
                   StartDate = c("2011-08-01","2012-08-01","2013-03-01","2015-07-01"),
                   EndDate = c("2012-07-01", "2013-03-1", "2015-03-31", as.character(Sys.Date())))
@@ -32,7 +32,7 @@ skillz <- data.frame(Skills = c("Web Analytics", "Web Analytics","Web Analytics"
                    Level = c(9,6,7,
                              8,7,6,
                              8,6,7,
-                             8,5,5),
+                             8,5,4),
                    Years = c(4,1.5,1.75,
                              3.25,2.25,1.25,
                              0.5,0.75,2,
